@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NM Raffles — Independent Draw Verification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span class="logo-icon">🎟️</span>
+      <span class="logo-text">NM Raffles</span>
+    </div>
+    <p class="tagline">Independent Draw Verification</p>
+  </header>
+
+  <main>
+    <section class="intro-card">
+      <h2>How it works</h2>
+      <p>
+        When a raffle is created, the bot generates a secret seed and publishes its
+        <strong>SHA-256 commit hash</strong> in the announcement. This proves the outcome
+        was predetermined. After the draw, the seed is revealed. Anyone can paste the
+        values below and verify the result was not manipulated.
+      </p>
+    </section>
+
+    <section class="form-card">
+      <h2>Verify a Draw</h2>
+
+      <div class="form-group">
+        <label for="commitHash">Commit Hash <span class="hint">(published at raffle creation)</span></label>
+        <input type="text" id="commitHash" class="mono" placeholder="e.g. a3f9b2c1d4e5..." />
+      </div>
+
+      <div class="form-group">
+        <label for="revealedSeed">Revealed Seed <span class="hint">(shown after draw)</span></label>
+        <input type="text" id="revealedSeed" class="mono" placeholder="e.g. 7e4a1b9c..." />
+      </div>
+
+      <div class="form-group">
+        <label for="numPrizes">Number of Prizes</label>
+        <input type="number" id="numPrizes" min="1" max="20" value="1" />
+      </div>
+
+      <div class="form-group">
+        <label for="entryList">
+          Entry List JSON
+          <span class="hint">Array of { "discordId": "...", "tickets": N }</span>
+        </label>
+        <textarea id="entryList" class="mono" rows="8" placeholder='[
+  { "discordId": "123456789012345678", "tickets": 5 },
+  { "discordId": "987654321098765432", "tickets": 3 }
+]'></textarea>
+      </div>
+
+      <button id="verifyBtn" onclick="verify()">🔐 Verify Draw</button>
+    </section>
+
+    <section class="results-card" id="results" style="display:none">
+      <h2>Verification Results</h2>
+      <div id="resultsContent"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>NM Raffles · Provably fair draws using HMAC-SHA256 · <a href="https://github.com/nmraffles/verify">View source</a></p>
+  </footer>
+
+  <script src="verify.js"></script>
+</body>
+</html>
