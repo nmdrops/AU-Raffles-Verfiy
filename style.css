@@ -101,6 +101,47 @@ h2 {
 
 .intro-card strong { color: var(--text); }
 
+/* ── Where card ──────────────────────────────────────── */
+.where-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+.where-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.where-item {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+
+.where-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.where-desc {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.where-desc strong { color: var(--text); }
+.where-desc em     { color: var(--accent); font-style: normal; }
+
+@media (max-width: 600px) {
+  .where-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Form ────────────────────────────────────────────── */
 .form-group {
   margin-bottom: 20px;
