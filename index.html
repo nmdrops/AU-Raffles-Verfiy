@@ -28,6 +28,58 @@
       </p>
     </section>
 
+    <section class="howto-card">
+      <h2>🎮 How to Play</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Buy Credits</div>
+            <div class="step-desc">Run <em>/buycredits</em> in the Discord server and choose how many credits you want. You'll receive a secure Stripe payment link — 1 credit = $1.00 AUD. Credits are added to your account automatically once payment is confirmed.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Find an Active Raffle</div>
+            <div class="step-desc">Head to <strong>#active-raffles</strong>. Each raffle shows the prize, ticket price in credits, total slots available, max tickets per member, and the draw date and time.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">React to Enter</div>
+            <div class="step-desc">Click the 🎟️ reaction on the raffle post. The bot will DM you asking how many tickets you'd like. Reply with a number — the bot will confirm your entry and deduct credits from your balance.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Wait for the Draw</div>
+            <div class="step-desc">At the listed draw time the bot automatically selects winners using a provably fair HMAC-SHA256 algorithm. Winners are announced in <strong>#winners</strong> and DMed directly by the bot.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <div class="step-title">Claim Your Prize</div>
+            <div class="step-desc">Winners can choose the <strong>physical prize</strong> or <strong>80% of the estimated market value</strong> paid directly to their bank account by an admin. An admin will reach out via DM to arrange delivery or payment.</div>
+          </div>
+        </div>
+      </div>
+      <div class="howto-commands">
+        <div class="cmd-title">Useful Commands</div>
+        <div class="cmd-grid">
+          <div class="cmd"><em>/buycredits</em><span>Purchase credits via Stripe</span></div>
+          <div class="cmd"><em>/balance</em><span>Check your credit balance</span></div>
+          <div class="cmd"><em>/transfer</em><span>Send credits to another member</span></div>
+          <div class="cmd"><em>/wins</em><span>View your raffle win history</span></div>
+          <div class="cmd"><em>/verify</em><span>Independently verify a draw result</span></div>
+          <div class="cmd"><em>/invite</em><span>Get your referral link (earn 3 credits for 5 referrals)</span></div>
+        </div>
+      </div>
+    </section>
+
     <section class="where-card">
       <h2>📍 Where to find these values</h2>
       <div class="where-grid">
@@ -42,10 +94,6 @@
         <div class="where-item">
           <div class="where-label">🏆 Number of Prizes</div>
           <div class="where-desc">Listed in the original raffle announcement under <em>"Number of Prizes"</em>.</div>
-        </div>
-        <div class="where-item">
-          <div class="where-label">📋 Entry List JSON</div>
-          <div class="where-desc">Run <strong>/verify &lt;raffle_id&gt;</strong> in the Discord server — the bot will show you the full entry snapshot to paste here. The Raffle ID is in the footer of every raffle announcement.</div>
         </div>
       </div>
     </section>
@@ -66,17 +114,6 @@
       <div class="form-group">
         <label for="numPrizes">Number of Prizes</label>
         <input type="number" id="numPrizes" min="1" max="20" value="1" />
-      </div>
-
-      <div class="form-group">
-        <label for="entryList">
-          Entry List JSON
-          <span class="hint">Array of { "discordId": "...", "tickets": N }</span>
-        </label>
-        <textarea id="entryList" class="mono" rows="8" placeholder='[
-  { "discordId": "123456789012345678", "tickets": 5 },
-  { "discordId": "987654321098765432", "tickets": 3 }
-]'></textarea>
       </div>
 
       <button id="verifyBtn" onclick="verify()">🔐 Verify Draw</button>
